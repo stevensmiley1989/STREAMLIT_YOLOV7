@@ -43,15 +43,17 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         '''
         super().__init__(img_size,path_yolov7_weights,path_img_i,device_i=device_i)
     def main(self):
-        st.title('Toy prediction?')
-        st.subheader('Upload an image and run Yolov7:  it will return the toy it thinks is most likely')
+        st.title('Drone View Detector')
+        st.subheader('Upload an image and run Yolov7.  \n  This model was trained to detect the following classes:\n')
+        for i,name_i in enumerate(self.names):
+            st.subheader(f'id={i} \t \t name={name_i}\n')
         
         self.response=requests.get(self.path_img_i)
         print(BytesIO(self.response.content))
         self.img_screen=Image.open(BytesIO(self.response.content))
 
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
-        st.markdown('YoloV7 on streamlit.  Demo of deeplearning with object detection of tanks.')
+        st.markdown('YoloV7 on streamlit.  Demo of object detection with YoloV7 with a web application.')
         self.im0=np.array(self.img_screen.convert('RGB'))
         self.load_image_st()
         predictions = st.button('Predict on the image?')
@@ -78,6 +80,13 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         self.inference()
         #self.show()
         self.img_screen=Image.fromarray(self.image)
+        self.capt='DETECTED:'
+        if len(self.predicted_bboxes_PascalVOC)>0:
+            for item in self.predicted_bboxes_PascalVOC:
+                name=item.split(',')[0]
+                conf=item.split(',')[-1]
+                self.capt=self.capt+ ' name='+name+' conf='+conf+', '
+
         self.capt='DETECTED'
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
