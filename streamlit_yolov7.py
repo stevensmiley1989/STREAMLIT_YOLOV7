@@ -62,6 +62,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         if predictions:
             self.predict()
             predictions=False
+        print('self.im0.shape',self.im0.shape)
 
     
     def load_image_st(self):
