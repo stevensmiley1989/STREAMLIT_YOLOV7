@@ -91,10 +91,10 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             """
             <style>
             .reportview-container {
-                background: url("https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/misc/IMG_0512_reduced.JPG")
+                background: url("https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/misc/IMG_0512.JPG")
             }
         .sidebar .sidebar-content {
-                background: url("https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/misc/IMG_0512_reduced.JPG")
+                background: url("https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/misc/IMG_0512.JPG")
             }
             </style>
             """,
