@@ -76,8 +76,9 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             color: black;
         }
         header .decoration {
-            background-image: none;
+            background-image: url(‘https://raw.githubusercontent.com/stevensmiley1989/Full_Loop_YOLO/main/misc/gradient_green.jpg’);
         }
+
 
         </style>
         """,
