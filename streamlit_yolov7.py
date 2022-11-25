@@ -44,13 +44,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.title('Toy prediction?')
         st.subheader('Upload an image and run Yolov7:  it will return the toy it thinks is most likely')
         self.response=requests.get(self.path_img_i)
-        #self.img_screen=Image.open(BytesIO(self.response.content))
-        byteImgIO = BytesIO()
-        byteImg = Image.open(self.response)
-        byteImg.save(byteImgIO, "PNG")
-        byteImgIO.seek(0)
-        byteImg = byteImgIO.read()
-        self.img_screen=byteImg
+        self.img_screen=Image.open(self.response.content)
+
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
         st.markdown('YoloV7 on streamlit.  Demo of deeplearning with object detection of tanks.')
         self.load_image_st()
