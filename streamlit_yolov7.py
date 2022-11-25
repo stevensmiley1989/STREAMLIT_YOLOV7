@@ -6,6 +6,7 @@ import logging
 import requests
 from PIL import Image
 from io import BytesIO
+import numpy as np
 class Streamlit_YOLOV7(SingleInference_YOLOV7):
     '''
     streamlit app that uses yolov7
@@ -60,7 +61,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         if self.uploaded_img != None:
             self.img_data=self.uploaded_img.getvalue()
             st.image(self.img_data)
-            self.im0=Image.open(BytesIO(self.img_data))
+            self.im0=np.array(Image.open(BytesIO(self.img_data)))
             return self.im0
         elif self.im0 !=None:
             return self.im0
