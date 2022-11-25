@@ -2,5 +2,5 @@ streamlit
 torch
 torchvision
 requests
-opencv-python
+opencv-python-headless
 yolov7
