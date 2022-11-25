@@ -83,8 +83,13 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         self.load_cv2mat(self.im0)
         self.inference()
         #self.show()
-        self.img_screen=Image.fromarray(self.image)
-        self.im0=np.array(self.img_screen.convert('RGB'))
+        try:
+            self.img_screen=Image.fromarray(self.image)
+            self.im0=np.array(self.img_screen.convert('RGB'))
+        except:
+            self.load_image_st()
+            pass
+        
         self.capt='DETECTED:'
         if len(self.predicted_bboxes_PascalVOC)>0:
             for item in self.predicted_bboxes_PascalVOC:
