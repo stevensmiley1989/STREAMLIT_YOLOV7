@@ -53,7 +53,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         }
         .sidebar .sidebar-content {
             background-image: linear-gradient(#2e7bcf,#2e7bcf);
-            color: white;
+            color: black;
         }
         .Widget>label {
             color: green;
