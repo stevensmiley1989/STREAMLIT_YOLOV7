@@ -61,13 +61,13 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
     
     def load_image_st(self):
         self.uploaded_img=st.file_uploader(label='Upload an image to test')
-        if self.uploaded_img != None:
+        if type(self.uploaded_img) != type(None):
             self.img_data=self.uploaded_img.getvalue()
             st.image(self.img_data)
             self.im0=Image.open(BytesIO(self.img_data)).convert('RGB')
             self.im0=np.array(self.im0)
             return self.im0
-        elif self.im0 !=None:
+        elif type(self.im0) !=type(None):
             return self.im0
         else:
             return None
