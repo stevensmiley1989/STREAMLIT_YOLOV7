@@ -70,7 +70,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         if type(uploaded_img) != type(None):
             self.img_data=uploaded_img.getvalue()
             st.image(self.img_data)
-            self.im0=Image.open(BytesIO(self.img_data)).convert('RGB')
+            self.im0=Image.open(BytesIO(self.img_data)) #.convert('RGB')
             self.im0=np.array(self.im0)
             st.write('self.im0.shape',self.im0.shape)
             return self.im0
