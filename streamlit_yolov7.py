@@ -69,7 +69,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
     
     def predict(self):
         st.write('loaded image in the model')
-        self.load_cv2mat()
+        self.load_cv2mat(self.im0)
         self.inference()
         #self.show()
         self.img_screen=Image.fromarray(self.image)
