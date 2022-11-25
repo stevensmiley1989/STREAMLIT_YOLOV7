@@ -87,7 +87,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         #self.show()
 
 
-        self.img_screen=Image.fromarray(self.image)#.convert('RGB')
+        self.img_screen=Image.fromarray(self.image).convert('RGB')
         #self.im0=np.array(self.img_screen)
         #self.im0=np.array(self.img_screen)
 
