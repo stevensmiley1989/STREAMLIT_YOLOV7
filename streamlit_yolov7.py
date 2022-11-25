@@ -46,7 +46,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.title('Custom YoloV7 Object Detector')
         st.subheader(""" Upload an image and run YoloV7 on it.  
         This model was trained to detect the following classes from a drone's vantage point. 
-        Notice, where the model fails on objects too close up and also when objects are too small/far away:\n""")
+        Notice where the model fails on objects too close up and also when objects are too small/far away:\n""")
         st.markdown(
             """
         <style>
