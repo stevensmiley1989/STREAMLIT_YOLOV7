@@ -79,13 +79,26 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             color: black;
         }
         header .decoration {
-            background-image: url(‘https://raw.githubusercontent.com/stevensmiley1989/Full_Loop_YOLO/main/misc/gradient_green.jpg’);
+            background-image: None);
         }
 
 
         </style>
         """,
             unsafe_allow_html=True,
+        )
+        st.markdown(
+            """
+            <style>
+            .reportview-container {
+                background: url("https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/misc/IMG_0514.JPG")
+            }
+        .sidebar .sidebar-content {
+                background: url("https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/misc/IMG_0514.JPG")
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
         )
         text_i_list=[]
         for i,name_i in enumerate(self.names):
