@@ -66,10 +66,10 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             return None
     
     def predict(self):
-        st.write('loaded iamge in the model')
+        st.write('loaded image in the model')
         self.load_cv2mat()
         self.inference()
-        self.show()
+        #self.show()
         self.img_screen=Image.fromarray(self.image)
         self.capt='DETECTED'
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
