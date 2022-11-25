@@ -82,10 +82,11 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         self.img_screen=Image.fromarray(self.image)
         self.capt='DETECTED:'
         if len(self.predicted_bboxes_PascalVOC)>0:
-            for item in self.predicted_bboxes_PascalVOC:
-                name=item.split(',')[0]
-                conf=item.split(',')[-1]
-                self.capt=self.capt+ ' name='+name+' conf='+conf+', '
+            for row in self.predicted_bboxes_PascalVOC:
+                for item in row:
+                    name=item.split(',')[0]
+                    conf=item.split(',')[-1]
+                    self.capt=self.capt+ ' name='+name+' conf='+conf+', '
 
         self.capt='DETECTED'
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
