@@ -129,8 +129,8 @@ class SingleInference_YOLOV7:
             self.img=self.im0.copy()    
             self.imn = cv2.cvtColor(self.im0, cv2.COLOR_BGR2RGB)
             self.img=self.imn.copy()
-            self.image = self.img.copy()
-            image, self.ratio, self.dwdh = self.letterbox(self.image,auto=False)
+            image = self.img.copy()
+            image, self.ratio, self.dwdh = self.letterbox(image,auto=False)
             self.image_letter=image.copy()
             image = image.transpose((2, 0, 1))
 
@@ -166,7 +166,7 @@ class SingleInference_YOLOV7:
                     #Visualizing bounding box prediction.
                     batch_id=i
                     image = self.ori_images[int(batch_id)]
-                    print(self.image.shape)
+
                     for j,(*bboxes,score,cls_id) in enumerate(reversed(det)):
                         x0=float(bboxes[0].cpu().detach().numpy())
                         y0=float(bboxes[1].cpu().detach().numpy())
@@ -249,6 +249,7 @@ if __name__=='__main__':
     img_size=640
     path_yolov7_weights="weights/best.pt"
     path_img_i=r"test_images/DJI_0028_fps24_frame00000040.jpg"
+    path_img_i=r"/media/steven/Elements/Drone_Videos_Park/FPS_DESIRED_1d5/JPEGImages/DJI_0028_fps24_frame00000040.jpg"
 
     #INITIALIZE THE app
     app=SingleInference_YOLOV7(img_size,path_yolov7_weights,path_img_i,device_i='cpu',conf_thres=0.25,iou_thres=0.5)
