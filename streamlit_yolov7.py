@@ -66,11 +66,16 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
     
     def load_image_st(self):
         uploaded_img=st.file_uploader(label='Upload an image to test')
-        self.img_data=uploaded_img.getvalue()
-        st.image(self.img_data)
-        self.im0=Image.open(BytesIO(self.img_data)).convert('RGB')
-        self.im0=np.array(self.im0)
-
+        if type(uploaded_img) != type(None):
+            self.img_data=uploaded_img.getvalue()
+            st.image(self.img_data)
+            self.im0=Image.open(BytesIO(self.img_data)).convert('RGB')
+            self.im0=np.array(self.im0)
+            return self.im0
+        elif type(self.im0) !=type(None):
+            return self.im0
+        else:
+            return self.im0
     
     def predict(self):
         st.write('loaded image in the model')
