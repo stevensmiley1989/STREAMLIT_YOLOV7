@@ -246,8 +246,8 @@ if __name__=='__main__':
 
     #INPUTS
     img_size=640
-    path_yolov7_weights="/mnt/DATA1/macbook/yolov7_weights_ex/rc_cars/best.pt"
-    path_img_i=r"/mnt/DATA1/DATA_OBJDETECTION/custom_TOY_HEMTT_TANK_ROBOT_HUMVEE/JPEGImages/107_new.jpg"
+    path_yolov7_weights="weights/best.pt"
+    path_img_i=r"test_images/DJI_0028_fps24_frame00000040.jpg"
 
     #INITIALIZE THE app
     app=SingleInference_YOLOV7(img_size,path_yolov7_weights,path_img_i,device_i='0',conf_thres=0.25,iou_thres=0.5)

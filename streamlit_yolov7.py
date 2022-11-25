@@ -82,7 +82,7 @@ if __name__=='__main__':
     #INPUTS for YOLOV7
     img_size=640
     path_yolov7_weights="weights/best.pt"
-    path_img_i=r"https://github.com/stevensmiley1989/STREAMLIT_YOLOV7/blob/main/test_images/toy_tank_example.jpg"
+    path_img_i=r"https://github.com/stevensmiley1989/STREAMLIT_YOLOV7/blob/main/test_images/DJI_0028_fps24_frame00000040.jpg"
     #INPUTS for webapp
     app.capt="A few of my toys"
     app.new_yolo_model(img_size,path_yolov7_weights,path_img_i)
