@@ -50,7 +50,9 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
         st.markdown('YoloV7 on streamlit.  Demo of deeplearning with object detection of tanks.')
         self.load_image_st()
-        self.predict()
+        predictions = st.button('Predict on the image?')
+        if predictions:
+            self.predict()
 
     
     def load_image_st(self):
@@ -90,6 +92,7 @@ if __name__=='__main__':
     app.capt="A few of my toys"
     app.new_yolo_model(img_size,path_yolov7_weights,path_img_i)
     app.load_model() #Load the yolov7 model
+    
     #app.read_img(path_img_i) #read in the jpg image from the full path, note not required if you want to load a cv2matrix instead directly
     app.main()
 
