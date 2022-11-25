@@ -165,7 +165,7 @@ class SingleInference_YOLOV7:
                     #det[:, :4] = self.scale_coords(self.im.shape[2:], det[:, :4], self.im0.shape).round()
                     #Visualizing bounding box prediction.
                     batch_id=i
-                    self.image = self.ori_images[int(batch_id)]
+                    image = self.ori_images[int(batch_id)]
                     print(self.image.shape)
                     for j,(*bboxes,score,cls_id) in enumerate(reversed(det)):
                         x0=float(bboxes[0].cpu().detach().numpy())
@@ -182,8 +182,9 @@ class SingleInference_YOLOV7:
                         self.predicted_bboxes_PascalVOC.append([name,x0,y0,x1,y1,score]) #PascalVOC annotations
                         color = self.colors[self.names.index(name)]
                         name += ' '+str(score)
-                        cv2.rectangle(self.image,self.box[:2],self.box[2:],color,2)
-                        cv2.putText(self.image,name,(self.box[0], self.box[1] - 2),cv2.FONT_HERSHEY_SIMPLEX,0.75,[225, 255, 255],thickness=2)
+                        cv2.rectangle(image,self.box[:2],self.box[2:],color,2)
+                        cv2.putText(image,name,(self.box[0], self.box[1] - 2),cv2.FONT_HERSHEY_SIMPLEX,0.75,[225, 255, 255],thickness=2)
+                    self.image=image
         else:
             log_i=f'Bad type for self.im\n {self.im}'
             self.logging.error(log_i)

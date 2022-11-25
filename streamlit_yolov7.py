@@ -62,7 +62,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         if predictions:
             self.predict()
             predictions=False
-        st.write('self.im0.shape',self.im0.shape)
+
 
     
     def load_image_st(self):
@@ -95,7 +95,6 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         self.capt='DETECTED:'
         if len(self.predicted_bboxes_PascalVOC)>0:
             for item in self.predicted_bboxes_PascalVOC:
-                print(item)
                 name=str(item[0])
                 conf=str(round(100*item[-1],2))
                 self.capt=self.capt+ ' name='+name+' confidence='+conf+'%, '
