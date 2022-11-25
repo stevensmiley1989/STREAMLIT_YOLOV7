@@ -88,8 +88,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.write('self.image.shape',self.image.shape)
 
         self.img_screen=Image.fromarray(self.image)
-        self.im0=np.array(self.img_screen)
-        #self.im0=np.array(self.img_screen.convert('RGB'))
+        #self.im0=np.array(self.img_screen)
+        self.im0=np.array(self.img_screen.convert('RGB'))
 
         
         self.capt='DETECTED:'
