@@ -49,8 +49,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         for i,name_i in enumerate(self.names):
             text_i_list.append(f'id={i} \t \t name={name_i}\n')
         st.selectbox('Classes',tuple(text_i_list))
-        conf_selection=st.selectbox('Confidence Threshold',tuple([0.1,0.25,0.5,0.75,0.95]))
-        st.write(conf_selection)
+        self.conf_selection=st.selectbox('Confidence Threshold',tuple([0.1,0.25,0.5,0.75,0.95]))
+        #st.write(self.conf_selection)
         
         self.response=requests.get(self.path_img_i)
 
@@ -82,6 +82,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             return None
     
     def predict(self):
+        self.conf_thres=self.conf_selection.get_value()
         st.write('loaded image in the model')
         self.load_cv2mat(self.im0)
 
