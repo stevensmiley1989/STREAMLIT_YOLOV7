@@ -69,8 +69,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             self.img_data=self.uploaded_img.getvalue()
             st.image(self.img_data)
             self.im0=Image.open(BytesIO(self.img_data)).convert('RGB')
-            self.image=self.im0
             self.im0=np.array(self.im0)
+            self.image=self.im0
             return self.im0
         elif type(self.im0) !=type(None):
             return self.im0
