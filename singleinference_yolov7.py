@@ -185,6 +185,8 @@ class SingleInference_YOLOV7:
                         cv2.rectangle(image,self.box[:2],self.box[2:],color,2)
                         cv2.putText(image,name,(self.box[0], self.box[1] - 2),cv2.FONT_HERSHEY_SIMPLEX,0.75,[225, 255, 255],thickness=2)
                     self.image=image
+                else:
+                    self.image=self.im0.copy()
         else:
             log_i=f'Bad type for self.im\n {self.im}'
             self.logging.error(log_i)
