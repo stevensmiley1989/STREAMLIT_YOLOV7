@@ -56,15 +56,15 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             color: white;
         }
         .Widget>label {
-            color: white;
+            color: green;
             font-family: monospace;
         }
         [class^="st-b"]  {
-            color: white;
+            color: green;
             font-family: monospace;
         }
         .st-bb {
-            background-color: transparent;
+            background-color: black;
         }
         .st-at {
             background-color: #0c0080;
@@ -86,7 +86,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         text_i_list=[]
         for i,name_i in enumerate(self.names):
             #text_i_list.append(f'id={i} \t \t name={name_i}\n')
-            text_i_list.append(f'{name_i}\n')
+            text_i_list.append(f'{i}: {name_i}\n')
         st.selectbox('Classes',tuple(text_i_list))
         self.conf_selection=st.selectbox('Confidence Threshold',tuple([0.1,0.25,0.5,0.75,0.95]))
         
