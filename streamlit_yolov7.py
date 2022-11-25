@@ -90,7 +90,7 @@ if __name__=='__main__':
     app.capt="A few of my toys"
     app.new_yolo_model(img_size,path_yolov7_weights,path_img_i)
     app.load_model() #Load the yolov7 model
-    app.read_img(path_img_i) #read in the jpg image from the full path, note not required if you want to load a cv2matrix instead directly
+    #app.read_img(path_img_i) #read in the jpg image from the full path, note not required if you want to load a cv2matrix instead directly
     app.main()
 
     # app.load_cv2mat() #load the OpenCV matrix, note could directly feed a cv2matrix here as app.load_cv2mat(cv2matrix)
