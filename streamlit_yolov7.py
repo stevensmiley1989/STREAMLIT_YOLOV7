@@ -61,6 +61,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         predictions = st.button('Predict on the image?')
         if predictions:
             self.predict()
+            predictions=False
 
     
     def load_image_st(self):
