@@ -70,9 +70,9 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         if type(uploaded_img) != type(None):
             self.img_data=uploaded_img.getvalue()
             st.image(self.img_data)
-            self.im0=Image.open(BytesIO(self.img_data)) #.convert('RGB')
+            self.im0=Image.open(BytesIO(self.img_data)).convert('RGB')
             self.im0=np.array(self.im0)
-            st.write('self.im0.shape',self.im0.shape)
+
             return self.im0
         elif type(self.im0) !=type(None):
             return self.im0
@@ -82,10 +82,10 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
     def predict(self):
         st.write('loaded image in the model')
         self.load_cv2mat(self.im0)
-        st.write('self.im0.shape',self.im0.shape)
+
         self.inference()
         #self.show()
-        st.write('self.image.shape',self.image.shape)
+
 
         self.img_screen=Image.fromarray(self.image).convert('RGB')
         #self.im0=np.array(self.img_screen)
