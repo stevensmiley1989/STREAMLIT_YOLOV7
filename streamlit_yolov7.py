@@ -44,7 +44,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         super().__init__(img_size,path_yolov7_weights,path_img_i,device_i=device_i)
     def main(self):
         st.title('Custom YoloV7 Object Detector')
-        st.subheader('Upload an image and run Yolov7.  \n  This model was trained to detect the following classes:\n')
+        st.subheader('Upload an image and run YoloV7.  \n  This model was trained to detect the following classes:\n')
         text_i_list=[]
         for i,name_i in enumerate(self.names):
             text_i_list.append(f'id={i} \t \t name={name_i}\n')
@@ -94,10 +94,6 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
 
-
-        
-
-
 if __name__=='__main__':
     app=Streamlit_YOLOV7()
 
@@ -106,8 +102,9 @@ if __name__=='__main__':
     path_yolov7_weights="weights/best.pt"
     path_img_i="https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/test_images/DJI_0028_fps24_frame00000040.jpg"
     #INPUTS for webapp
-    app.capt="A few of my toys"
+    app.capt="Initial Image"
     app.new_yolo_model(img_size,path_yolov7_weights,path_img_i)
+    app.conf_thres=0.75
     app.load_model() #Load the yolov7 model
     
     #app.read_img(path_img_i) #read in the jpg image from the full path, note not required if you want to load a cv2matrix instead directly
