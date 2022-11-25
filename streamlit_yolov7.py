@@ -43,7 +43,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         '''
         super().__init__(img_size,path_yolov7_weights,path_img_i,device_i=device_i)
     def main(self):
-        st.title('Drone View Detector')
+        st.title('Custom YoloV7 Object Detector')
         st.subheader('Upload an image and run Yolov7.  \n  This model was trained to detect the following classes:\n')
         text_i_list=[]
         for i,name_i in enumerate(self.names):
@@ -87,8 +87,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             for item in self.predicted_bboxes_PascalVOC:
                 print(item)
                 name=str(item[0])
-                conf=str(item[-1])
-                self.capt=self.capt+ ' name='+name+' conf='+conf+', '
+                conf=str(round(100*item[-1],2))
+                self.capt=self.capt+ ' name='+name+' confidence='+conf+'%, '
 
 
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
