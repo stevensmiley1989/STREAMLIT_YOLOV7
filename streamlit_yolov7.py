@@ -50,7 +50,6 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             text_i_list.append(f'id={i} \t \t name={name_i}\n')
         st.selectbox('Classes',tuple(text_i_list))
         self.conf_selection=st.selectbox('Confidence Threshold',tuple([0.1,0.25,0.5,0.75,0.95]))
-        #st.write(self.conf_selection)
         
         self.response=requests.get(self.path_img_i)
 
@@ -65,10 +64,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             self.predict()
             predictions=False
 
-
-    
     def load_image_st(self):
-        uploaded_img=st.file_uploader(label='Upload an image to test')
+        uploaded_img=st.file_uploader(label='Upload an image')
         if type(uploaded_img) != type(None):
             self.img_data=uploaded_img.getvalue()
             st.image(self.img_data)
@@ -83,18 +80,12 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
     
     def predict(self):
         self.conf_thres=self.conf_selection
-        st.write(self.conf_selection)
-        st.write('loaded image in the model')
+        st.write('Loading image')
         self.load_cv2mat(self.im0)
-
+        st.write('Making inference')
         self.inference()
-        #self.show()
-
 
         self.img_screen=Image.fromarray(self.image).convert('RGB')
-        #self.im0=np.array(self.img_screen)
-        #self.im0=np.array(self.img_screen)
-
         
         self.capt='DETECTED:'
         if len(self.predicted_bboxes_PascalVOC)>0:
