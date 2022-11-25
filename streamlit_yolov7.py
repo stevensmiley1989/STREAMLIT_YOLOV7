@@ -75,18 +75,17 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         elif type(self.im0) !=type(None):
             return self.im0
         else:
-            return None
+            return self.im0
     
     def predict(self):
         st.write('loaded image in the model')
         self.load_cv2mat(self.im0)
         self.inference()
         #self.show()
-        try:
-            self.img_screen=Image.fromarray(self.image)
-            self.im0=np.array(self.img_screen.convert('RGB'))
-        except:
-            pass
+
+        self.img_screen=Image.fromarray(self.image)
+        self.im0=np.array(self.img_screen.convert('RGB'))
+
         
         self.capt='DETECTED:'
         if len(self.predicted_bboxes_PascalVOC)>0:
