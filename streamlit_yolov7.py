@@ -82,7 +82,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             return None
     
     def predict(self):
-        self.conf_thres=self.conf_selection.get_value()
+        self.conf_thres=self.conf_selection
+        st.write(self.conf_selection)
         st.write('loaded image in the model')
         self.load_cv2mat(self.im0)
 
