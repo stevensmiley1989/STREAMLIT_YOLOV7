@@ -36,7 +36,7 @@ class SingleInference_YOLOV7:
     def __init__(self,
     img_size, path_yolov7_weights, 
     path_img_i='None',
-    device_i='0',
+    device_i='cpu',
     conf_thres=0.25,
     iou_thres=0.5):
 
@@ -250,7 +250,7 @@ if __name__=='__main__':
     path_img_i=r"test_images/DJI_0028_fps24_frame00000040.jpg"
 
     #INITIALIZE THE app
-    app=SingleInference_YOLOV7(img_size,path_yolov7_weights,path_img_i,device_i='0',conf_thres=0.25,iou_thres=0.5)
+    app=SingleInference_YOLOV7(img_size,path_yolov7_weights,path_img_i,device_i='cpu',conf_thres=0.25,iou_thres=0.5)
 
     #LOAD & INFERENCE
     app.load_model() #Load the yolov7 model
