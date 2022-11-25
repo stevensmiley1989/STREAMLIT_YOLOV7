@@ -46,7 +46,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.title('Drone View Detector')
         st.subheader('Upload an image and run Yolov7.  \n  This model was trained to detect the following classes:\n')
         for i,name_i in enumerate(self.names):
-            st.subheader(f'id={i} \t \t name={name_i}\n')
+            st.sub_text(f'id={i} \t \t name={name_i}\n')
         
         self.response=requests.get(self.path_img_i)
         print(BytesIO(self.response.content))
@@ -82,11 +82,10 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         self.img_screen=Image.fromarray(self.image)
         self.capt='DETECTED:'
         if len(self.predicted_bboxes_PascalVOC)>0:
-            for row in self.predicted_bboxes_PascalVOC:
-                for item in row:
-                    name=item.split(',')[0]
-                    conf=item.split(',')[-1]
-                    self.capt=self.capt+ ' name='+name+' conf='+conf+', '
+            for item in self.predicted_bboxes_PascalVOC:
+                name=item[0].split(',')[0]
+                conf=item[0].split(',')[-1]
+                self.capt=self.capt+ ' name='+name+' conf='+conf+', '
 
         self.capt='DETECTED'
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
