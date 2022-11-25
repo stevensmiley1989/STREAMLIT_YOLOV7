@@ -87,7 +87,6 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             self.img_screen=Image.fromarray(self.image)
             self.im0=np.array(self.img_screen.convert('RGB'))
         except:
-            self.load_image_st()
             pass
         
         self.capt='DETECTED:'
