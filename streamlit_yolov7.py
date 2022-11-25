@@ -91,10 +91,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
                 name=str(item[0])
                 conf=str(round(100*item[-1],2))
                 self.capt=self.capt+ ' name='+name+' confidence='+conf+'%, '
-        self.load_image_st()
-
-
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
+        self.image=None
     
 
 if __name__=='__main__':
