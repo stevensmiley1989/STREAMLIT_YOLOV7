@@ -51,7 +51,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         st.selectbox('Classes',tuple(text_i_list))
         
         self.response=requests.get(self.path_img_i)
-        print(BytesIO(self.response.content))
+
         self.img_screen=Image.open(BytesIO(self.response.content))
 
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
@@ -73,8 +73,8 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
             self.im0=np.array(self.im0)
             self.image=self.im0
             return self.im0
-        elif type(self.im0) !=type(None):
-            return self.im0
+        #elif type(self.im0) !=type(None):
+        #    return self.im0
         else:
             return None
     
@@ -109,13 +109,5 @@ if __name__=='__main__':
     app.conf_thres=0.75
     app.load_model() #Load the yolov7 model
     
-    #app.read_img(path_img_i) #read in the jpg image from the full path, note not required if you want to load a cv2matrix instead directly
     app.main()
 
-    # app.load_cv2mat() #load the OpenCV matrix, note could directly feed a cv2matrix here as app.load_cv2mat(cv2matrix)
-    # app.inference() #make single inference
-    # app.show() #show results
-    # print(f'''
-    # app.predicted_bboxes_PascalVOC\n
-    # \t name,x0,y0,x1,y1,score\n
-    # {app.predicted_bboxes_PascalVOC}''') 
