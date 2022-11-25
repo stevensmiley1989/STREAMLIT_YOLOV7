@@ -130,13 +130,13 @@ class SingleInference_YOLOV7:
             self.imn = cv2.cvtColor(self.im0, cv2.COLOR_BGR2RGB)
             self.img=self.imn.copy()
             self.image = self.img.copy()
-            self.image, self.ratio, self.dwdh = self.letterbox(self.image,auto=False)
-            self.image_letter=self.image.copy()
-            self.image = self.image.transpose((2, 0, 1))
+            image, self.ratio, self.dwdh = self.letterbox(self.image,auto=False)
+            self.image_letter=image.copy()
+            image = image.transpose((2, 0, 1))
 
-            self.image = np.expand_dims(self.image, 0)
-            self.image = np.ascontiguousarray(self.image)
-            self.im = self.image.astype(np.float32)
+            image = np.expand_dims(image, 0)
+            image = np.ascontiguousarray(image)
+            self.im = image.astype(np.float32)
             self.im = torch.from_numpy(self.im).to(self.device)
             self.im = self.im.half() if self.half else self.im.float()  # uint8 to fp16/32
             self.im /= 255.0  # 0 - 255 to 0.0 - 1.0
