@@ -45,8 +45,10 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
     def main(self):
         st.title('Drone View Detector')
         st.subheader('Upload an image and run Yolov7.  \n  This model was trained to detect the following classes:\n')
+        text_i_list=[]
         for i,name_i in enumerate(self.names):
-            st.markdown(f'id={i} \t \t name={name_i}\n',unsafe_allow_html=True)
+            text_i_list.append(f'id={i} \t \t name={name_i}\n')
+        st.selectbox('Classes',tuple(text_i_list))
         
         self.response=requests.get(self.path_img_i)
         print(BytesIO(self.response.content))
@@ -87,7 +89,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
                 conf=item[0].split(',')[-1]
                 self.capt=self.capt+ ' name='+name+' conf='+conf+', '
 
-        self.capt='DETECTED'
+
         st.image(self.img_screen, caption=self.capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     
 
