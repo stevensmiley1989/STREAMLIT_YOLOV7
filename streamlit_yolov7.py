@@ -46,7 +46,7 @@ class Streamlit_YOLOV7(SingleInference_YOLOV7):
         self.response=requests.get(self.path_img_i)
         #self.img_screen=Image.open(BytesIO(self.response.content))
         byteImgIO = BytesIO()
-        byteImg = Image.open(self.path_img_i)
+        byteImg = Image.open(self.response)
         byteImg.save(byteImgIO, "PNG")
         byteImgIO.seek(0)
         byteImg = byteImgIO.read()
