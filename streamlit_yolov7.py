@@ -157,7 +157,7 @@ if __name__=='__main__':
     app=Streamlit_YOLOV7()
 
     #INPUTS for YOLOV7
-    img_size=640
+    img_size=1056
     path_yolov7_weights="weights/best.pt"
     path_img_i="https://raw.githubusercontent.com/stevensmiley1989/STREAMLIT_YOLOV7/main/test_images/DJI_0028_fps24_frame00000040.jpg"
     #INPUTS for webapp
